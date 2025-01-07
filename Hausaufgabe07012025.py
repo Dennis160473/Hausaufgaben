@@ -24,10 +24,8 @@ class Recipe:
         print(f"The cooking time is {self.time}.")
 
     def rezept_anzeigen(self):
+        court = Recipe({Ingredient}, {self.time})
         print(f"The following recipe is available for you: ")
-
-
-court = Recipe("{Ingredient}", {self.time}")
 
 
 # Aufgabe 2
