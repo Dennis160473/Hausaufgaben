@@ -5,7 +5,7 @@
 
 class Ingedient:
     def __init__(self, name, calories, preparation_time):
-        selfIngredient.name = name
+        self.Ingredient.name = name
         self.calories = calories
         self.preparation_time = preparation_time
 
