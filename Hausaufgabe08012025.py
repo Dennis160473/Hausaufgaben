@@ -7,13 +7,13 @@ class Pet:
         self.energy_level = energy_level
 
     def get_description(self):
-        return f" Mein {self.species} {self.name} ist {self.age} Jahre alt."
+        return self.name + self.species + self.age
 
-    def play(self, duration):
-        return self.energy_level + "," + self.age
+    # def play(self, duration):
 
-    def feed(self, food):
-        return self.species + "," + self.favorite_food
+    # def feed(self, food):
 
-    my_pet1 = Pet("Bello", "Hund", 5, "Knochen", 100)
-    my_pet2 = Pet("Mimi", "Katze", 3, "Fisch", 100)
+
+my_pet1 = Pet("Bello", "Hund", 5, "Knochen", 100)
+my_pet2 = Pet("Mimi", "Katze", 3, "Fisch", 100)
+print(f" Mein {self.species} {self.name} ist {self.age} Jahre alt.")
