@@ -16,5 +16,5 @@ class Pet:
 # ???
 
 my_pet1 = Pet("Bello", "Hund", 5, "Knochen", 100)
-my_pet2 = Pet("Mimi", "Katze", 3, "Fisch", 100)
-print(my_pet1)
+# my_pet2 = Pet("Mimi", "Katze", 3, "Fisch", 100)
+my_pet1.get_description()
