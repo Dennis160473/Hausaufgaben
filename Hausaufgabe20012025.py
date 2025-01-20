@@ -1,12 +1,21 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
 
 # Begrüßungsroute
-@app.route("/")
-def home():
-    return "Willkommen bei meiner Flask-App!"
+@app.route("/greet/<name>")
+def Get_Query_Params():
+    firstname = request.args["firstname"]
+    name = request.args["vname"]
+
+    return f"I am {firstname} {name}. Hello Users, welcome to my Flask API!"
+
+# Welcome
+@app.route("/about")
+def info():
+    return (
+        "Mein Name ist Dennis Angermann, und ich interessiere mich für Webentwicklung."
 
 
 # Performance
