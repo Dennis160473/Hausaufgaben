@@ -3,23 +3,43 @@ from flask import Flask
 app = Flask(__name__)
 
 
-# GET route
+# Begrüßungsroute
 @app.route("/")
 def home():
-    return "Hello, World! This is a simple API running on Mac."
+    return "Willkommen bei meiner Flask-App!"
 
 
-@app.route("/test")
-def test_func():
-    return "Test!!!"
+# Performance
+@app.route("/about")
+def info():
+    return (
+        "Mein Name ist Dennis Angermann, und ich interessiere mich für Webentwicklung."
+    )
 
 
-@app.route("/max")
-def max_func():
-    return "MAX!!!"
+# Project specification
+@app.route("/project")
+def team():
+    return "My current project is a Flask API for beginners."
 
 
-# Run the app
+# News
+@app.route("/news")
+def hilfe():
+    return "Today we will learn how to create APIs with Flask!"
+
+
+# Feedback
+@app.route("/feedback")
+def kontakt():
+    return "We look forward to your feedback at feedback@example.com."
+
+
+# Feedback
+@app.route("/support")
+def kontakt():
+    return "Visit our support page at support.example.com."
+
+
 if __name__ == "__main__":
-    # Use a custom port (e.g., 8080) and bind to all interfaces
-    app.run(debug=True, host="0.0.0.0", port=6060)
+    app.run(port=6060)
