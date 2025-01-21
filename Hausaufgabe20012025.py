@@ -7,15 +7,17 @@ app = Flask(__name__)
 @app.route("/greet/<name>")
 def Get_Query_Params():
     firstname = request.args["firstname"]
-    name = request.args["vname"]
+    name = request.args["name"]
 
     return f"I am {firstname} {name}. Hello Users, welcome to my Flask API!"
+
 
 # Welcome
 @app.route("/about")
 def info():
     return (
         "Mein Name ist Dennis Angermann, und ich interessiere mich für Webentwicklung."
+    )
 
 
 # Performance
