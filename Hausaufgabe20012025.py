@@ -12,14 +12,6 @@ def Get_Query_Params():
     return f"I am {firstname} {name}. Hello Users, welcome to my Flask API!"
 
 
-# Welcome
-@app.route("/about")
-def info():
-    return (
-        "Mein Name ist Dennis Angermann, und ich interessiere mich für Webentwicklung."
-    )
-
-
 # Performance
 @app.route("/about")
 def info():
@@ -36,19 +28,19 @@ def team():
 
 # News
 @app.route("/news")
-def hilfe():
+def help():
     return "Today we will learn how to create APIs with Flask!"
 
 
 # Feedback
 @app.route("/feedback")
-def kontakt():
+def contact():
     return "We look forward to your feedback at feedback@example.com."
 
 
 # Feedback
 @app.route("/support")
-def kontakt():
+def support():
     return "Visit our support page at support.example.com."
 
 
