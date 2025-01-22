@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/home", methods=["GET"])
 def home():
-    return "Welcome to our users api"
+    return "Welcome to our Product api"
 
 
 products = [
