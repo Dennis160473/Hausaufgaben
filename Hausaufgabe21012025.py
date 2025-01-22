@@ -2,60 +2,83 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+
+@app.route("/home", methods=["GET"])
+def home():
+    return "Welcome to our users api"
+
+
 users = [
-    {"id": 1, "name": "Alice", "email": "alice@example.com"},
-    {"id": 2, "name": "Bob", "email": "bob@example.com"},
-    {"id": 3, "name": "Charlie", "email": "charlie@example.com"},
+    {"id": 1, "name": "Alice", "password": "letsGO", "email": "alice@example.com"},
+    {"id": 2, "name": "Bob", "password": "letsGO1", "email": "bob@example.com"},
+    {"id": 3, "name": "Charlie", "password": "letsGO2", "email": "charlie@example.com"},
 ]
 
 
-# Aufgabe 2 Route 1
-@app.route("/users/<id>", methods=["GET"])
-def get_user(id):
-    user1 = request.args.get("users[1]")
+@app.route("/users/<int:user_id>", methods=["GET"])
+def get_user_by_id(user_id):
+    final_user = None
 
-    return f"Our User for testing the Flask App is {user1}."
+    for u in users:
+        if u["id"] == user_id:
+            final_user = u
+
+        if final_user == None:
+            return "User could not be found"
+
+        return f"The User is {final_user}"
 
 
-# Aufgabe 2 Route 2
-@app.route("/logIn/<id>", methods=["GET"])
-def get_logIn(id):
-    if users == 2:
-        print("The LogIn is approved.")
+@app.route("/search", methods=["GET"])
+def get_user_by_name():
+    final_user = None
+    name = request.args.get("name")
+    for u in users:
+        if u["name"] == name:
+            final_user = u
 
+        if final_user == None:
+            return "User could not be found"
+
+        return f"The User is {final_user}"
+
+
+@app.route("/users/login", methods=["POST"])
+def login():
+    credentials = request.get.json()
+    name = credentials["name"]
+    password = credentials["password"]
+
+    for u in users:
+        if u["name"] == name:
+            final_user = u
+        if u["password"] == password:
+            final_user = u
+        if final_user == None:
+            return f"User could not be found"
     else:
-        print(f"The LogIn is not correct.")
+        return f"Hallo {credentials}{name} {password}"
 
 
-# Aufgabe 2 Route 3
-@app.route("/search/<name>", methods=["GET"])
-def get_search(name):
-    for i in range(users):
-        user3 = {Charlie}
-
-    return f"Found user: Charlie"
-
-
-@app.route("/brand", methods=["GET"])
-def get_mamazon_default_brand_page():
-    # Should return a welcome to brand page text
-    return "Welcome to brand page"
-
-
-@app.route("/brand/<brand_id>", methods=["GET"])
-def get_brand_by_id(brand_id):
-    # Should return  welcome to specific brand page text
-    # E.g. Welcome to Hilfigher (dynamisch)
-    # Should be able to filter by brand type and should display the filter on the screen
-
-    brand_type = request.args.get("type")
-    # E.g. Welcome to Hilfigher and the type is t-shirts
-    # Should be able to filter by condition of the article and should display the condition on the screen
-    # --> Goals E.g. Welcome to Hilfigher and the type is t-shirts and the condition is used
+# Route 1
+@app.route("/brand/<int:id>", methods=["GET"])
+def brand(id):
+    type = request.args.get("type")
     condition = request.args.get("condition")
-    return (
-        f"My Brand id is:{brand_id}, type: {brand_type} and the condition: {condition}"
-    )
+    return f"brand-id: {id}, type: {type}, condition: {condition}"
+
+
+# Route 2
+@app.route("/product/<product_id>", methods=["GET"])
+def product(product_id):
+    return f"product_id: {product_id}"
+
+
+# Route 3
+@app.route("/search", methods=["GET"])
+def search():
+    query = request.args.get("query")
+    return f"Searching for: {query}"
 
 
 if __name__ == "__main__":
