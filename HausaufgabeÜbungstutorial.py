@@ -405,4 +405,87 @@ if __name__ == "__main__":
     num = int(input("Find : "))
     print(binary_search(a, num))
 
-##
+## Gegeben seien zwei .txtDateien, die Zahlenlisten enthalten. Suchen Sie die Zahlen, die sich überschneiden.
+## Eine .txtDatei enthält eine Liste aller Primzahlen unter 1000 und die andere .txtDatei eine Liste mit Glückszahlen bis 1000.
+
+primeslist = []
+with open("primenumbers.txt") as primesfile:
+    line = primesfile.readline()
+    while line:
+        primeslist.append(int(line))
+        line = primesfile.readline()
+
+happieslist = []
+with open("happynumbers.txt") as happiesfile:
+    line = happiesfile.readline()
+    while line:
+        happieslist.append(int(line))
+        line = happiesfile.readline()
+
+overlaplist = []
+for elem in primeslist:
+    if elem in happieslist:
+        overlaplist.append(elem)
+
+print(overlaplist)
+
+
+## Fragen Sie den Benutzer, welche Größe das Spielbrett haben soll, das er zeichnen möchte, und zeichnen Sie es mithilfe einer Python- printAnweisung für ihn auf den Bildschirm.
+
+def horiz_line():
+    print(" --- " * board_size)
+
+def print_vert_line():
+    print("|   " * (board_size + 1))
+
+if __name__ == "__main__":
+        board_size = int(input("What size of game board? "))
+
+for index in range(board_size):
+        print_horiz_line()
+        print_vert_line()
+        print horiz_line()
+
+
+## Sie, der Benutzer, haben eine Zahl zwischen 0 und 100 im Kopf.
+## Das Programm errät eine Zahl und Sie, der Benutzer, sagen, ob sie zu hoch, zu niedrig oder Ihre Zahl ist.
+## Am Ende dieses Austauschs sollte Ihr Programm ausdrucken, wie viele Versuche nötig waren, um Ihre Nummer zu ermitteln.
+
+import random
+
+# Awroken
+
+MINIMUM = 0
+MAXIMUM = 100
+NUMBER = random.randint(MINIMUM, MAXIMUM)
+TRY = 0
+RUNNING = True
+ANSWER = None
+
+while RUNNING:
+    print("Is it %s?" % str(NUMBER))
+    ANSWER = raw_input()
+    if "no" in ANSWER.lower() and "lower" in ANSWER.lower():
+        NUMBER -= random.randint(1, 4)
+    elif "no" in ANSWER.lower() and "higher" in ANSWER.lower():
+        NUMBER += random.randint(1, 4)
+    elif ANSWER.lower() == "no":
+        print("Higher or lower?")
+        ANSWER = raw_input()
+        if ANSWER.lower() == "higher":
+            NUMBER += random.randint(1, 4)
+        elif ANSWER.lower() == "lower":
+            NUMBER -= random.randint(1, 4)
+    elif ANSWER.lower() == "yes":
+        if TRY < 2:
+            print("Yes! It only took me %s try!" % str(TRY))
+        elif TRY < 2 and TRY < 10:
+            print("Pretty well for a robot, %s tries." % str(TRY))
+        else:
+            print("That's so bad, %s tries." % str(TRY))
+        RUNNING = False
+    TRY += 1
+    
+print("Thanks for the game!")
+
+
