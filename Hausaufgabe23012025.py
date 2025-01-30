@@ -306,3 +306,13 @@ elif strength == "weak":
 
 password = "".join(password)
 print(password)
+
+
+## Erstellen Sie ein Programm, das mit dem Benutzer das Spiel „Kühe und Bullen“ spielt.
+## Das Spiel funktioniert folgendermaßen:
+### Generieren Sie nach dem Zufallsprinzip eine 4-stellige Zahl. Bitten Sie den Benutzer, eine 4-stellige Zahl zu erraten.
+### Für jede Ziffer, die der Benutzer an der richtigen Stelle richtig erraten hat , erhält er eine „Kuh“.
+### Für jede Ziffer, die der Benutzer an der falschen Stelle richtig erraten hat , erhält er einen „Bullen“.
+### Sagen Sie dem Benutzer bei jedem Raten, wie viele „Kühe“ und „Bullen“ er hat.
+### Sobald der Benutzer die richtige Zahl errät, ist das Spiel vorbei.
+### Notieren Sie die Anzahl der Vermutungen des Benutzers während des Spiels und teilen Sie sie dem Benutzer am Ende mit.
