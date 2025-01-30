@@ -14,24 +14,24 @@ def addiere_zahlen(a, b):
 
 
 # Die Ausgabe "ergebis" wurde falsch geschrieben. Korrekt ist "ergebnis".
-# Es gibt keine Definition für ergebis.
 
 
 def subtrahiere_zahlen(a, b):
     return a - b
 
 
-# Es gibt noch keine Definition für Variable c.
+# c ist kein Parameter. Die Ausgabe darf nur a - b sein.
 
 
 def main():
     # Bei Definition einer Funktion muss am Ende stets ein : gesetzt werden.
     zahl1 = int(input("Gib eine Zahl ein: "))
     zahl2 = int(input("Gib eine weitere Zahl ein: "))
+    # Die eingegebene Zahl muss, mittels "int", als Zahl definiert sein.
 
     summe = addiere_zahlen(zahl1, zahl2)
     print(f"Die Summe ist: {summe}")
-    # Die Definition heißt main und nicht summe.
+    # Die Variable "summe" muss in eine {} und innerhalb des Strings sein.
     differenz = subtrahiere_zahlen(zahl1, zahl2)
     print(f"Die Differenz ist: {differenz}")
 
@@ -41,7 +41,3 @@ def main():
 if __name__ == "__main__":
     # In der Funktion müssen bei einem Vergleich stets 2 == gesetzt werden.
     main()
-
-
-# Die Funktion muss innerhalb der Definition liegen. Daher eingerückt sein.
-# Es muss ein break erfolgen. Sonst Endlosschleife.
