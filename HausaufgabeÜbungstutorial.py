@@ -373,4 +373,36 @@ if __name__ == "__main__":
             print("Your guess isn't quite right, try again.")
 
 
+## Schreiben Sie eine Funktion, die eine geordnete Liste von Zahlen (eine Liste, deren Elemente in der Reihenfolge vom kleinsten zum größten sind) und eine andere Zahl annimmt.
+## Die Funktion entscheidet, ob die angegebene Zahl in der Liste enthalten ist oder nicht, und gibt einen entsprechenden Booleschen Wert zurück (und druckt ihn dann aus).
+## Zusatz: Verwenden Sie die binäre Suche.
+
+
+import random
+
+
+def binary_search(lst, num):
+    lst.sort()
+    if len(lst) == 0:
+        return False
+    else:
+        found = ""
+        midpt = len(lst) // 2
+        midel = lst[midpt]
+        if midel == num:
+            found = 1
+        elif midel > num:
+            lst = lst[:midpt]
+        elif midel < num:
+            lst = lst[midpt + 1 :]
+        result = True if found == 1 else binary_search(lst, num)
+        return result
+
+
+if __name__ == "__main__":
+    a = [random.randint(0, 100) for i in range(100)]
+    print(sorted(a))
+    num = int(input("Find : "))
+    print(binary_search(a, num))
+
 ##
