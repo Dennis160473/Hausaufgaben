@@ -7,15 +7,32 @@ import rsa
 key = Fernet.generate_key()
 cipher = Fernet(key)
 
-fernet = Fernet(key)
-encMessage = fernet.encrypt(message.encode())
-
+encMessage = cipher.encrypt(message.encode())
 print("original string: ", message)
 print("encrypted string: ", encMessage)
 
-decMessage = fernet.decrypt(encMessage).decode()
-
+decMessage = cipher.decrypt(encMessage).decode()
 print("decrypted string: ", decMessage)
+
+publicKey, privateKey = rsa.newkeys(512)
+
+encMessage = rsa.encrypt(message.encode(), publicKey)
+message = "hello geeks"
+print("original string: ", message)
+print("encrypted string: ", encMessage)
+
+decMessage = rsa.decrypt(encMessage, privateKey).decode()
+print("decrypted string: ", decMessage)
+
+
+text = "Hallo Welt!"
+encrypted_text = cipher_suite.encrypt(text.encode())
+print("Encrypted:", encrypted_text)
+
+decrypted_text = cipher_suite.decrypt(encrypted_text)
+print("Decrypted:", decrypted_text.decode())
+
+#################################################################
 
 
 # Simulierte Datenbank
