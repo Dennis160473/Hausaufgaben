@@ -489,3 +489,72 @@ while RUNNING:
 print("Thanks for the game!")
 
 
+## Für diese Übung werden wir die Geburtstage unserer Freunde notieren und diese Informationen anhand ihres Namens finden.
+## Erstellen Sie ein Wörterbuch (in Ihrer Datei) mit Namen und Geburtstagen.
+## Wenn Sie Ihr Programm ausführen, sollte es den Benutzer auffordern, einen Namen einzugeben, und ihm den Geburtstag dieser Person zurückgeben.
+
+if __name__ == '__main__':
+    birthdays = {
+        'Anna': '03/14/1879',
+        'Max': '01/17/1706',
+        'Robert': '12/10/1815',
+        'Unbekannt': '06/14/1946',
+        'Ich': '01/6/1955'}
+
+    print("Welcome to the birthday dictionary. We know the birthdays of:")
+    for key in birthday_dictionary:
+        print(key)
+
+while True:
+    name = input("Who's birthday do you want to look up? ")
+    if name in birthday_dictionary:
+        print(birthday_dictionary[name])
+else:
+        print("Sorry, we don't have this person's birthday.")
+
+
+## Ändern Sie in dieser Übung Ihr Programm so, dass das Geburtstagswörterbuch aus einer JSON-Datei auf der Festplatte geladen wird, anstatt das Wörterbuch im Programm zu definieren.
+## Bonus : Bitten Sie den Benutzer um den Namen und das Geburtsdatum eines anderen, um diese dem Wörterbuch hinzuzufügen, und aktualisieren Sie die JSON-Datei auf Ihrer Festplatte mit dem Namen.
+## Wenn Sie das Programm mehrmals ausführen und immer wieder neue Namen hinzufügen, sollte Ihre JSON-Datei immer größer werden.
+
+import json
+
+birthday = {}
+with open('birthdays.json', 'r') as f:
+          birthday = json.load(f)
+
+def add_entry():
+    name = input('Who do you want to add to the Birthday Dictionnary?\n').title()
+    date = input('When is {} born?\n'.format(name))
+    birthday[name] = date
+    with open('birthdays.json', 'w') as f:
+        json.dump(birthday, f)
+    print('{} was added to my birthday list\n'.format(name))
+
+def find_date():
+    name = input("who's birthday do you want to know?\n").title()
+    try :
+        if birthday[name]:
+            print('{} is born on {}\n'.format(name, birthday[name]))
+    except KeyError:
+        print('{} is not in the list\n'.format(name))
+
+def list_entries():
+    print('The current entries in my birthday list are:\n============================================')
+    for key in birthday:
+        print(key.ljust(31), ':', birthday[key])
+    print()
+
+while True:
+    what_next = input('What do you want to do next? you can: Add, Find, List, Quit\n').capitalize()
+    if what_next == 'Quit':
+        print('Good Bye')
+        raise SystemExit(0)
+    elif what_next == 'Add':
+        add_entry()
+    elif what_next == 'Find':
+        find_date()
+    elif what_next == 'List':
+        list_entries()
+
+## 
