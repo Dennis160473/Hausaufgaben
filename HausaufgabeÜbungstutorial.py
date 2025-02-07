@@ -557,4 +557,83 @@ while True:
     elif what_next == 'List':
         list_entries()
 
+
+
+## In dieser Übung laden Sie diese JSON-Datei von der Festplatte, extrahieren die Monate aller Geburtstage und zählen, wie viele in jedem Monat Geburtstag haben.
+
+import json
+from collections import Counter
+
+with open("birthdays.json", "r") as f:
+	birthdays = json.load(f)
+
+num_to_string = {
+	1: "January",
+	2: "February",
+	3: "March", 
+	4: "April",
+	5: "May",
+	6: "June",
+	7: "July",
+	8: "August",
+	9: "September",
+	10: "October",
+	11: "November",
+	12: "December"
+}
+
+months = []
+for name, birthday_string in birthdays.items():
+	month = int(birthday_string.split("/")[0])
+	months.append(num_to_string[month])
+
+print(Counter(months))
+
+
+##  In dieser Übung verwenden Sie die Python-Bibliothek Bokeh , um mithilfe meiner JSON-Datei mit den Geburtstagen ein Histogramm zu erstellen, das die Monate zeigt, in denen die Eingetragenen Geburtstag haben.
+
+from collections import Counter
+import json
+import math
+
+from bokeh.plotting import figure, show, output_file
+
+
+DATA_FILE = "scientist_birthdays.json"
+output_file("plot.html")
+
+with open(DATA_FILE, "r") as f:
+    DATA = json.load(f)
+
+num_to_string = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
+
+months = []
+for name, birthday_string in DATA.items():
+    month = int(birthday_string.split("/")[0])
+    months.append(num_to_string[month])
+months = Counter(months)
+
+months, counts = list(zip(*months.items()))
+
+categories = list(num_to_string.values())
+p = figure(x_range=categories, title="Scientists' Birthday Months")
+p.xaxis.major_label_orientation = math.pi/4
+p.vbar(x=months, top=counts)
+
+show(p)
+
+
 ## 
